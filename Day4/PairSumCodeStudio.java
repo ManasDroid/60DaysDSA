@@ -6,15 +6,15 @@ import java.util.List;
 
 public class PairSumCodeStudio {
     public static void main(String[] args) {
-        int[] arr = {1 , 2 , 3 , 5 , 15 , 12 , 9 , 11};
-        List<int[]> ans =  pairSum(arr,14);
+        int[] arr = {2 ,-3 ,3 ,3 ,-2};
+        List<int[]> ans =  pairSum(arr,0);
         for (int i[] : ans) {
             System.out.println(Arrays.toString(i));
         }
     }
     public static List<int[]> pairSum(int[] arr, int s) {
         Arrays.sort(arr);
-        // 1 2 3 5 9 11 12 15
+        // -6 2 2 2 5
         List<int[]> ans = new ArrayList<>();
         int i = 0;
         int j = arr.length-1;
@@ -31,7 +31,18 @@ public class PairSumCodeStudio {
                 ans.add(res);
                 i++;
                 j--;
+
+                while(arr[i]==arr[i-1]){
+                    ans.add(res);
+                    i++;
+                }
+                while(arr[j]==arr[j+1]){
+                    if(i>j)break;
+                    ans.add(res);
+                    j--;
+                }
             }
+
 
 
         }
